@@ -1,82 +1,1141 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Sofiya | .NET Developer</title>
-    <link rel="stylesheet" href="style.css">
+
+    <meta name="description"
+          content="Sofiya G S - .NET Developer portfolio">
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #080b16;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================
+           ANIMATED BACKGROUND
+        ========================== */
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #6c63ff;
+            filter: blur(180px);
+            opacity: 0.18;
+            top: -150px;
+            left: -150px;
+            z-index: -2;
+            animation: moveGlow 8s infinite alternate ease-in-out;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #00d4ff;
+            filter: blur(180px);
+            opacity: 0.12;
+            bottom: -200px;
+            right: -150px;
+            z-index: -2;
+            animation: moveGlow2 10s infinite alternate ease-in-out;
+        }
+
+        @keyframes moveGlow {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(200px, 150px);
+            }
+        }
+
+        @keyframes moveGlow2 {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(-180px, -100px);
+            }
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 11, 22, 0.75);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #7c6cff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #c8c9d4;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #7c6cff;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 8% 60px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .hello {
+            color: #8f86ff;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 15px;
+            animation: fadeDown 1s ease forwards;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 85px);
+            line-height: 1;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ffffff, #8f86ff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeUp 1s ease forwards;
+        }
+
+        .hero h2 {
+            font-size: clamp(22px, 4vw, 38px);
+            color: #c5c6d0;
+            margin-bottom: 20px;
+        }
+
+        .typing {
+            color: #7c6cff;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #9ea0ae;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .primary {
+            background: linear-gradient(135deg, #7066ff, #00b8ff);
+            box-shadow: 0 10px 35px rgba(100,90,255,0.25);
+        }
+
+        .primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 45px rgba(100,90,255,0.4);
+        }
+
+        .secondary {
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.04);
+        }
+
+        .secondary:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+
+        /* =========================
+           SECTIONS
+        ========================== */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            color: #7c6cff;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            margin-top: 10px;
+        }
+
+        .section-title p {
+            color: #9294a1;
+            margin-top: 10px;
+        }
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .about-card {
+            padding: 35px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.4s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(124,108,255,0.5);
+        }
+
+        .about-card h3 {
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .about-card p {
+            color: #9ea0ae;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           SKILLS
+        ========================== */
+
+        .skills-grid {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 18px;
+        }
+
+        .skill {
+            padding: 25px 15px;
+            text-align: center;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-7px) scale(1.03);
+            background: rgba(124,108,255,0.12);
+            border-color: #7066ff;
+        }
+
+        .skill-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .skill p {
+            color: #d7d7df;
+            font-weight: 600;
+        }
+
+        /* =========================
+           EXPERIENCE
+        ========================== */
+
+        .timeline {
+            max-width: 850px;
+            margin: auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(#7066ff, #00c8ff);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 45px;
+            padding-left: 60px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 11px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #7066ff;
+            box-shadow: 0 0 20px #7066ff;
+        }
+
+        .timeline-card {
+            padding: 30px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            transition: 0.4s;
+        }
+
+        .timeline-card:hover {
+            transform: translateX(8px);
+            border-color: #7066ff;
+        }
+
+        .timeline-card h3 {
+            font-size: 22px;
+        }
+
+        .company {
+            color: #7c6cff;
+            margin: 8px 0;
+            font-weight: 600;
+        }
+
+        .timeline-card p {
+            color: #9ea0ae;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================== */
+
+        .projects-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            position: relative;
+            padding: 35px;
+            min-height: 280px;
+            border-radius: 20px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.07),
+                rgba(255,255,255,0.02)
+            );
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.4s;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: #7066ff;
+            filter: blur(80px);
+            opacity: 0;
+            right: -50px;
+            top: -50px;
+            transition: 0.4s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(124,108,255,0.6);
+        }
+
+        .project-card:hover::before {
+            opacity: 0.25;
+        }
+
+        .project-number {
+            color: #7066ff;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .project-card h3 {
+            font-size: 24px;
+            margin: 20px 0 12px;
+        }
+
+        .project-card p {
+            color: #9ea0ae;
+            line-height: 1.7;
+        }
+
+        .tech {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech span {
+            padding: 6px 10px;
+            border-radius: 20px;
+            background: rgba(124,108,255,0.12);
+            color: #aaa3ff;
+            font-size: 12px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .contact p {
+            color: #9ea0ae;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social {
+            padding: 12px 22px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        .social:hover {
+            background: #7066ff;
+            transform: translateY(-4px);
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #70727f;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        /* =========================
+           SCROLL ANIMATION
+        ========================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media(max-width: 768px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .hero {
+                padding: 120px 5% 60px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .timeline-card {
+                padding: 22px;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Hi, I'm Sofiya 👋</h1>
-        <h2>.NET Developer</h2>
+<!-- =========================
+     NAVBAR
+========================== -->
+
+<nav>
+
+    <a href="#" class="logo">
+        Sofiya<span>.</span>
+    </a>
+
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hello">
+            👋 Hello, I'm
+        </div>
+
+        <h1>
+            Sofiya G S
+        </h1>
+
+        <h2>
+            I'm a
+            <span class="typing"></span>
+        </h2>
+
         <p>
-            I develop web and desktop applications using C#, ASP.NET,
-            SQL Server and related technologies.
+            I build web and desktop applications with clean,
+            practical and scalable solutions using the .NET ecosystem.
         </p>
 
-        <a href="#projects">View My Projects</a>
-    </header>
+        <div class="hero-buttons">
 
-    <section id="about">
-        <h2>About Me</h2>
+            <a href="#projects" class="btn primary">
+                View My Work →
+            </a>
+
+            <a href="#contact" class="btn secondary">
+                Contact Me
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================== -->
+
+<section id="about">
+
+    <div class="section-title reveal">
+
+        <span>About Me</span>
+
+        <h2>Who I Am</h2>
+
         <p>
-            I am a Computer Science graduate and software developer
-            with experience in ASP.NET and desktop application development.
-        </p>
-    </section>
-
-    <section id="skills">
-        <h2>Skills</h2>
-
-        <p>C#</p>
-        <p>ASP.NET MVC</p>
-        <p>ASP.NET Core</p>
-        <p>Web API</p>
-        <p>SQL Server</p>
-        <p>Entity Framework</p>
-        <p>ADO.NET</p>
-        <p>Angular</p>
-        <p>JavaScript</p>
-        <p>HTML / CSS / Bootstrap</p>
-        <p>WinForms / WPF</p>
-    </section>
-
-    <section id="experience">
-        <h2>Experience</h2>
-
-        <h3>Junior Software Developer</h3>
-        <p>Peniel Tech LLC</p>
-
-        <h3>Junior ASP.NET Developer</h3>
-        <p>Estrrado Technologies</p>
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-
-        <h3>Employee Project Portal</h3>
-        <p>
-            Employee and project management application using ASP.NET MVC,
-            C# and SQL Server.
+            A developer who enjoys turning ideas into working applications.
         </p>
 
-        <h3>Scrap Metal Invoice System</h3>
+    </div>
+
+
+    <div class="about-container">
+
+        <div class="about-card reveal">
+
+            <h3>👩‍💻 Developer</h3>
+
+            <p>
+                I am a Computer Science graduate with experience
+                developing web and desktop applications using
+                C#, ASP.NET and SQL Server.
+            </p>
+
+        </div>
+
+
+        <div class="about-card reveal">
+
+            <h3>🚀 What I Do</h3>
+
+            <p>
+                I work with ASP.NET MVC, Web API, SQL Server,
+                Entity Framework, ADO.NET, Angular, WinForms
+                and WPF to build practical software solutions.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SKILLS
+========================== -->
+
+<section id="skills">
+
+    <div class="section-title reveal">
+
+        <span>My Skills</span>
+
+        <h2>Technologies I Work With</h2>
+
+        <p>Tools and technologies I use to build applications.</p>
+
+    </div>
+
+
+    <div class="skills-grid">
+
+        <div class="skill reveal">
+            <div class="skill-icon">💻</div>
+            <p>C#</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">⚙️</div>
+            <p>ASP.NET MVC</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">🚀</div>
+            <p>ASP.NET Core</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">🔗</div>
+            <p>Web API</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">🗄️</div>
+            <p>SQL Server</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">📦</div>
+            <p>Entity Framework</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">🔧</div>
+            <p>ADO.NET</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">🅰️</div>
+            <p>Angular</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">⚡</div>
+            <p>JavaScript</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">🎨</div>
+            <p>HTML / CSS</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">🖥️</div>
+            <p>WinForms</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">🪟</div>
+            <p>WPF</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EXPERIENCE
+========================== -->
+
+<section id="experience">
+
+    <div class="section-title reveal">
+
+        <span>Experience</span>
+
+        <h2>My Journey</h2>
+
+        <p>My professional experience in software development.</p>
+
+    </div>
+
+
+    <div class="timeline">
+
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+
+                <h3>Junior Software Developer</h3>
+
+                <div class="company">
+                    Peniel Tech LLC
+                </div>
+
+                <p>
+                    Developed and maintained desktop applications
+                    using C#, WinForms and WPF. Worked with MVVM,
+                    Crystal Reports and application modules.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+
+                <h3>Junior ASP.NET Developer</h3>
+
+                <div class="company">
+                    Estrrado Technologies
+                </div>
+
+                <p>
+                    Worked on web application development using
+                    ASP.NET, C#, SQL Server and related web technologies.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROJECTS
+========================== -->
+
+<section id="projects">
+
+    <div class="section-title reveal">
+
+        <span>Portfolio</span>
+
+        <h2>Featured Projects</h2>
+
+        <p>Some applications I've worked on.</p>
+
+    </div>
+
+
+    <div class="projects-grid">
+
+
+        <div class="project-card reveal">
+
+            <div class="project-number">
+                PROJECT 01
+            </div>
+
+            <h3>Employee Project Portal</h3>
+
+            <p>
+                Employee and project management application
+                with CRUD operations, pagination and database
+                integration.
+            </p>
+
+            <div class="tech">
+                <span>C#</span>
+                <span>ASP.NET MVC</span>
+                <span>SQL Server</span>
+                <span>ADO.NET</span>
+            </div>
+
+            <br>
+
+            <a href="https://github.com/Sofiya512/EmployeeProjectPortal"
+               target="_blank"
+               class="btn secondary">
+                View on GitHub →
+            </a>
+
+        </div>
+
+
+        <div class="project-card reveal">
+
+            <div class="project-number">
+                PROJECT 02
+            </div>
+
+            <h3>Scrap Metal Invoice System</h3>
+
+            <p>
+                Invoice management application for handling
+                items, invoice information and database operations.
+            </p>
+
+            <div class="tech">
+                <span>ASP.NET MVC</span>
+                <span>C#</span>
+                <span>SQL Server</span>
+                <span>Bootstrap</span>
+            </div>
+
+        </div>
+
+
+        <div class="project-card reveal">
+
+            <div class="project-number">
+                PROJECT 03
+            </div>
+
+            <h3>eLate Applications</h3>
+
+            <p>
+                Worked on desktop application modules including
+                cheque printing and e-invoice functionality.
+            </p>
+
+            <div class="tech">
+                <span>C#</span>
+                <span>WinForms</span>
+                <span>WPF</span>
+                <span>Crystal Reports</span>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================== -->
+
+<section id="contact">
+
+    <div class="contact reveal">
+
+        <div class="section-title">
+
+            <span>Contact</span>
+
+            <h2>Let's Connect</h2>
+
+        </div>
+
         <p>
-            Invoice management application developed using ASP.NET MVC
-            and SQL Server.
+            I'm open to opportunities where I can learn,
+            contribute and grow as a software developer.
         </p>
-    </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
 
-        <p>Email: your-email@gmail.com</p>
+        <div class="socials">
 
-        <a href="https://github.com/Sofiya512">
-            GitHub
-        </a>
-    </section>
+            <a class="social"
+               href="https://github.com/Sofiya512"
+               target="_blank">
+                💻 GitHub
+            </a>
+
+            <a class="social"
+               href="mailto:YOUR_EMAIL@gmail.com">
+                📧 Email
+            </a>
+
+            <a class="social"
+               href="YOUR_LINKEDIN_URL"
+               target="_blank">
+                💼 LinkedIn
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    © 2026 Sofiya G S · Built with HTML, CSS & JavaScript ❤️
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+    /* =========================
+       TYPING ANIMATION
+    ========================== */
+
+    const words = [
+        ".NET Developer",
+        "ASP.NET Developer",
+        "C# Developer",
+        "Software Developer"
+    ];
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    const typingElement =
+        document.querySelector(".typing");
+
+
+    function typeEffect() {
+
+        const currentWord = words[wordIndex];
+
+        if (!deleting) {
+
+            typingElement.textContent =
+                currentWord.substring(0, charIndex + 1);
+
+            charIndex++;
+
+            if (charIndex === currentWord.length) {
+
+                deleting = true;
+
+                setTimeout(typeEffect, 1500);
+
+                return;
+            }
+
+        } else {
+
+            typingElement.textContent =
+                currentWord.substring(0, charIndex - 1);
+
+            charIndex--;
+
+            if (charIndex === 0) {
+
+                deleting = false;
+
+                wordIndex++;
+
+                if (wordIndex === words.length) {
+                    wordIndex = 0;
+                }
+            }
+
+        }
+
+        setTimeout(
+            typeEffect,
+            deleting ? 50 : 100
+        );
+    }
+
+
+    typeEffect();
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================== */
+
+    const reveals =
+        document.querySelectorAll(".reveal");
+
+
+    function revealOnScroll() {
+
+        const windowHeight =
+            window.innerHeight;
+
+        reveals.forEach(element => {
+
+            const elementTop =
+                element.getBoundingClientRect().top;
+
+            if (elementTop <
+                windowHeight - 80) {
+
+                element.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        revealOnScroll
+    );
+
+    revealOnScroll();
+
+</script>
 
 </body>
 </html>
