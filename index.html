@@ -97,8 +97,7 @@ const backTop=document.getElementById('backTop');window.addEventListener('scroll
     if(button){button.addEventListener('click',()=>{status.textContent='Voice playback is not supported in this browser. Please try the latest Chrome or Edge.';status.classList.add('show')});}
     return;
   }
-  const introduction="Hello, and welcome to my portfolio. My name is Sofiya. I am a Dot NET Developer with over one year of experience
-    in developing web and desktop applications. I work with C sharp, ASP Dot NET, ADO Dot NET Core, ASP Dot NET core MVC, SQL Server,Angular,Rest API'S, WinForms, and WPF. I have contributed to website development, business application features, invoicing modules, and reporting using Crystal Reports. I enjoy solving problems, learning new technologies, and building reliable, user-friendly software. I am excited to bring my skills to a collaborative development team. Thank you for visiting my portfolio.";
+  const introduction="Hello, and welcome to my portfolio. My name is Sofiya. I am a Dot NET Developer with over one year of experience in developing web and desktop applications. I work with C sharp, ASP Dot NET, ADO Dot NET Core, ASP Dot NET core MVC, SQL Server,Angular,Rest API'S, WinForms, and WPF. I have contributed to website development, business application features, invoicing modules, and reporting using Crystal Reports. I enjoy solving problems, learning new technologies, and building reliable, user-friendly software. I am excited to bring my skills to a collaborative development team. Thank you for visiting my portfolio.";
   let speaking=false;
   function reset(){speaking=false;button.setAttribute('aria-pressed','false');label.textContent='Introduce Me';icon.textContent='▶';character.classList.remove('talking');status.textContent='Thanks for listening!';status.classList.add('show');}
   button.addEventListener('click',()=>{
