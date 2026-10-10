@@ -30,13 +30,35 @@
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr  .8fr;gap:10px}.scene{transform:scale(.88)}.projects{grid-template-columns:repeat(2,1fr)}.skills{grid-template-columns:repeat(3,1fr)}.proof-grid{grid-template-columns:repeat(2,1fr)}.proof-item:nth-child(2){border-right:0}.proof-item:nth-child(-n+2){border-bottom:1px solid var(--line)}}
 @media(max-width:680px){.wrap{width:min(var(--max),calc(100% - 32px))}.section{padding:76px 0}.nav-inner{height:68px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:#141912;padding:18px 22px 22px;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid var(--line)}.nav-links.open{display:flex}.nav-links li a{display:block;padding:11px 0}.nav-cta{display:inline-block!important;text-align:center;margin-top:8px}.hero{padding:115px 0 48px;min-height:auto}.hero-grid{grid-template-columns:1fr}.hero-content{padding-top:10px}.hero h1{font-size:clamp(3.25rem,14vw,5rem)}.scene{min-height:350px;transform:scale(.86);margin:-15px 0 -25px}.tag-one{left:0}.tag-two{right:0}.about-grid,.contact-grid{grid-template-columns:1fr}.surface{padding:23px}.skills{grid-template-columns:repeat(2,1fr)}.job{grid-template-columns:1fr;gap:8px;padding:23px 0}.projects{grid-template-columns:1fr}.project{min-height:280px}.proof-item{padding:19px 12px}.proof-item strong{font-size:.96rem}.proof-item span{font-size:.75rem}.footer-inner{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+
+/* Interactive pistachio cursor effect (desktop pointers only) */
+.cursor-glow{position:fixed;left:0;top:0;width:34px;height:34px;border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(201,228,167,.34) 0%,rgba(201,228,167,.14) 38%,rgba(201,228,167,0) 72%);mix-blend-mode:screen;transition:opacity .25s ease,width .22s ease,height .22s ease}
+.cursor-core{position:fixed;left:0;top:0;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px rgba(201,228,167,.9),0 0 26px rgba(201,228,167,.45);pointer-events:none;z-index:10000;opacity:0;transform:translate(-50%,-50%)}
+.cursor-ring{position:fixed;left:0;top:0;width:34px;height:34px;border:1px solid rgba(201,228,167,.65);border-radius:50%;pointer-events:none;z-index:9998;opacity:0;transform:translate(-50%,-50%);transition:width .22s ease,height .22s ease,border-color .22s ease,opacity .25s ease}
+.cursor-ring.hovering{width:52px;height:52px;border-color:rgba(201,228,167,.95);background:rgba(201,228,167,.045)}
+@media (hover:none),(pointer:coarse),(max-width:760px){.cursor-glow,.cursor-core,.cursor-ring{display:none!important}}
+@media (prefers-reduced-motion:reduce){.cursor-glow,.cursor-ring{transition:none!important}}
+
+
+/* Voice introduction control and talking character effect */
+.talk-controls{position:absolute;z-index:8;bottom:-24px;left:50%;transform:translateX(-50%);display:flex;gap:9px;align-items:center;justify-content:center;width:max-content;max-width:100%}
+.talk-btn{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(201,228,167,.48);border-radius:999px;padding:11px 17px;background:#c9e4a7;color:#151a12;font-weight:800;font-size:.86rem;box-shadow:0 8px 28px rgba(201,228,167,.18);cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.talk-btn:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(201,228,167,.3);background:#d8edbd}
+.talk-btn .talk-icon{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(21,26,18,.1)}
+.talk-btn[aria-pressed="true"] .talk-icon{animation:voicePulse 1s ease-in-out infinite}
+.talk-status{position:absolute;left:50%;bottom:-58px;transform:translateX(-50%);width:max-content;max-width:90%;font-size:.76rem;color:#c9e4a7;text-align:center;opacity:0;transition:opacity .2s;pointer-events:none}
+.talk-status.show{opacity:1}
+.character.talking .face:after{animation:talkMouth .22s ease-in-out infinite alternate}
+@keyframes talkMouth{from{height:3px;width:15px;left:41px;border-radius:50%}to{height:10px;width:12px;left:43px;border:2px solid #8b4e48;border-top:0;border-radius:0 0 50% 50%}}
+@keyframes voicePulse{50%{transform:scale(1.12);box-shadow:0 0 0 5px rgba(21,26,18,.08)}}
+@media(max-width:680px){.talk-controls{bottom:-18px}.talk-status{bottom:-51px}.scene{margin-bottom:4px}}
 </style>
 </head>
 <body>
 <header class="nav"><div class="wrap nav-inner"><a class="brand" href="#home">Sofiya<span style="color:var(--green)">.</span> <span style="font-weight:500;color:#9da697;font-size:.78rem">G.S.</span></a><button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button><ul class="nav-links" id="navLinks"><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a class="nav-cta" href="#contact">Let's talk ↗</a></li></ul></div></header>
 <main>
 <section class="hero" id="home"><div class="wrap hero-grid"><div class="hero-content"><div class="availability"><span class="pulse"></span> .NET Developer · Open to opportunities</div><div class="eyebrow">Hello, I'm Sofiya</div><h1>Building useful<br><span>digital solutions.</span></h1><p class="role">Software Developer focused on <strong><span id="rotatingRole">ASP.NET Core</span></strong></p><p class="hero-copy">I develop web and desktop applications with C#, ASP.NET Core, SQL Server and modern frontend technologies. I enjoy turning business needs into reliable, user-friendly software.</p><div class="actions"><a class="btn btn-primary" href="#projects">Explore my work <span>↗</span></a><a class="btn btn-secondary" href="#contact">Contact me <span>→</span></a></div><div class="hero-meta"><span><i>⌁</i> C# & .NET development</span><span><i>⌁</i> Web + desktop applications</span></div></div>
-<div class="scene" aria-label="Animated illustration of a developer working at a laptop"><div class="scene-glow"></div><div class="orbit"></div><div class="float-tag tag-one">&lt; clean code /&gt;</div><div class="float-tag tag-two">C# · SQL · .NET</div><div class="float-tag tag-three">✦ Learning by building</div><div class="character"><div class="hair"></div><div class="face"></div><div class="fringe"></div><div class="neck"></div><div class="body-shape"></div><div class="shirt-panel"></div><div class="arm left"></div><div class="arm right"></div><div class="laptop"></div></div><div class="desk-shadow"></div></div></div></section>
+<div class="scene" aria-label="Animated illustration of a developer working at a laptop"><div class="scene-glow"></div><div class="orbit"></div><div class="float-tag tag-one">&lt; clean code /&gt;</div><div class="float-tag tag-two">C# · SQL · .NET</div><div class="float-tag tag-three">✦ Learning by building</div><div class="character"><div class="hair"></div><div class="face"></div><div class="fringe"></div><div class="neck"></div><div class="body-shape"></div><div class="shirt-panel"></div><div class="arm left"></div><div class="arm right"></div><div class="laptop"></div></div><div class="desk-shadow"></div><div class="talk-controls"><button type="button" class="talk-btn" id="introTalkBtn" aria-pressed="false"><span class="talk-icon" id="introTalkIcon">▶</span><span id="introTalkLabel">Introduce Me</span></button></div><div class="talk-status" id="introTalkStatus" aria-live="polite">Listen to my professional introduction</div></div></div></section>
 <div class="proof"><div class="wrap proof-grid"><div class="proof-item"><strong>Web Development</strong><span>ASP.NET MVC / Core</span></div><div class="proof-item"><strong>Desktop Solutions</strong><span>WinForms · WPF · MVVM</span></div><div class="proof-item"><strong>Data & APIs</strong><span>SQL Server · REST APIs</span></div><div class="proof-item"><strong>Full-stack foundation</strong><span>Angular · JavaScript · AJAX</span></div></div></div>
 <section class="section" id="about"><div class="wrap"><div class="section-head reveal"><span class="eyebrow">A little about me</span><h2>Practical thinking.<br>Thoughtful development.</h2><p>I'm a Computer Science Engineering graduate who enjoys building maintainable applications, solving bugs, and collaborating with teams to deliver dependable software.</p></div><div class="about-grid"><article class="surface reveal"><h3>What I bring</h3><p>Experience across web and desktop application development, with a focus on business workflows, data handling, usability and debugging.</p><div class="focus-list"><div><span class="check">✓</span><span>Developing and enhancing application features</span></div><div><span class="check">✓</span><span>Working with SQL queries, database operations and integrations</span></div><div><span class="check">✓</span><span>Testing, troubleshooting and improving application stability</span></div></div></article><article class="surface reveal"><h3>Education & learning</h3><p><strong style="color:var(--text)">B.E. — Computer Science Engineering</strong><br>Bethlahem Institute of Engineering, Tamil Nadu</p><p style="margin-top:12px">CGPA: <strong style="color:var(--green)">8.4 / 10</strong></p><p style="margin-top:18px"><strong style="color:var(--text)">PROPEL FSD PRO</strong><br>Faith InfoTech Academy, Technopark<br>Specialization: .NET Full Stack with Angular</p></article></div></div></section>
 <section class="section" id="skills" style="background:rgba(255,255,255,.014);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)"><div class="wrap"><div class="section-head reveal"><span class="eyebrow">My toolkit</span><h2>Technologies I work with</h2><p>A practical mix of backend, frontend, database, desktop and development tools.</p></div><div class="skills"><div class="skill reveal"><b>C#</b><span>Programming</span></div><div class="skill reveal"><b>ASP.NET Core</b><span>Web applications</span></div><div class="skill reveal"><b>ASP.NET MVC</b><span>MVC architecture</span></div><div class="skill reveal"><b>ADO.NET</b><span>Data access</span></div><div class="skill reveal"><b>SQL Server</b><span>Queries & database</span></div><div class="skill reveal"><b>REST APIs</b><span>Service integration</span></div><div class="skill reveal"><b>HTML & CSS</b><span>Responsive UI</span></div><div class="skill reveal"><b>JavaScript</b><span>Interactive features</span></div><div class="skill reveal"><b>AJAX</b><span>Asynchronous requests</span></div><div class="skill reveal"><b>Angular</b><span>Frontend framework</span></div><div class="skill reveal"><b>WinForms & WPF</b><span>Desktop applications</span></div><div class="skill reveal"><b>MVVM</b><span>Application pattern</span></div><div class="skill reveal"><b>Crystal Reports</b><span>Reporting</span></div><div class="skill reveal"><b>Git · Jira</b><span>Team workflows</span></div><div class="skill reveal"><b>Postman</b><span>API testing</span></div><div class="skill reveal"><b>Python · Oracle</b><span>Additional skills</span></div></div></div></section>
@@ -61,5 +83,53 @@ const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entr
 document.querySelectorAll('.filter').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));button.classList.add('active');const filter=button.dataset.filter;document.querySelectorAll('.project').forEach(card=>{const show=filter==='all'||card.dataset.category===filter;card.hidden=!show;if(show){card.classList.remove('visible');requestAnimationFrame(()=>card.classList.add('visible'))}})}));
 document.querySelectorAll('.copy-contact').forEach(button=>button.addEventListener('click',async()=>{const original=button.textContent;try{await navigator.clipboard.writeText(button.dataset.copy);button.textContent='Copied!'}catch(e){const field=document.createElement('textarea');field.value=button.dataset.copy;field.style.position='fixed';field.style.opacity='0';document.body.appendChild(field);field.select();try{document.execCommand('copy');button.textContent='Copied!'}catch(err){button.textContent=button.dataset.copy}field.remove()}setTimeout(()=>button.textContent=original,1800)}));
 const backTop=document.getElementById('backTop');window.addEventListener('scroll',()=>backTop.classList.toggle('show',window.scrollY>500),{passive:true});backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));document.getElementById('year').textContent=new Date().getFullYear();
+
+
+// Spoken portfolio introduction using the browser's built-in speech synthesis.
+// Available voices depend on the visitor's browser and operating system.
+(()=>{
+  const button=document.getElementById('introTalkBtn');
+  const label=document.getElementById('introTalkLabel');
+  const icon=document.getElementById('introTalkIcon');
+  const status=document.getElementById('introTalkStatus');
+  const character=document.querySelector('.character');
+  if(!button || !('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)){
+    if(button){button.addEventListener('click',()=>{status.textContent='Voice playback is not supported in this browser. Please try the latest Chrome or Edge.';status.classList.add('show')});}
+    return;
+  }
+  const introduction="Hello, and welcome to my portfolio. My name is Sofiya. I am a Dot NET Developer with over one year of experience in developing web and desktop applications. I work with C sharp, ASP dot NET Core, ASP dot NET core MVC, SQL Server,Angular,Rest API'S, WinForms, and WPF. I have contributed to website development, business application features, invoicing modules, and reporting using Crystal Reports. I enjoy solving problems, learning new technologies, and building reliable, user-friendly software. I am excited to bring my skills to a collaborative development team. Thank you for visiting my portfolio.";
+  let speaking=false;
+  function reset(){speaking=false;button.setAttribute('aria-pressed','false');label.textContent='Introduce Me';icon.textContent='▶';character.classList.remove('talking');status.textContent='Thanks for listening!';status.classList.add('show');}
+  button.addEventListener('click',()=>{
+    if(speaking){window.speechSynthesis.cancel();reset();return;}
+    window.speechSynthesis.cancel();
+    const utterance=new SpeechSynthesisUtterance(introduction);
+    utterance.lang='en-IN';utterance.rate=0.91;utterance.pitch=1.12;utterance.volume=1;
+    const voices=window.speechSynthesis.getVoices();
+    const englishVoices=voices.filter(v=>/^en(-|_)/i.test(v.lang));
+    const preferred=englishVoices.find(v=>/female|woman|zira|samantha|aria|jenny|sonia|heera|priya|veena/i.test(v.name)) || englishVoices.find(v=>/en-IN/i.test(v.lang)) || englishVoices[0];
+    if(preferred) utterance.voice=preferred;
+    utterance.onstart=()=>{speaking=true;button.setAttribute('aria-pressed','true');label.textContent='Stop Introduction';icon.textContent='Ⅱ';character.classList.add('talking');status.textContent='Speaking…';status.classList.add('show');};
+    utterance.onend=reset;
+    utterance.onerror=()=>{reset();status.textContent='Could not play the introduction. Please try again.';};
+    window.speechSynthesis.speak(utterance);
+  });
+  window.addEventListener('pagehide',()=>window.speechSynthesis.cancel());
+})();
+
+// Custom cursor: soft pistachio glow + smooth trailing ring.
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const glow=document.createElement('div'); glow.className='cursor-glow'; glow.setAttribute('aria-hidden','true');
+  const core=document.createElement('div'); core.className='cursor-core'; core.setAttribute('aria-hidden','true');
+  const ring=document.createElement('div'); ring.className='cursor-ring'; ring.setAttribute('aria-hidden','true');
+  document.body.append(glow,ring,core);
+  let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my,visible=false;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;if(!visible){visible=true;glow.style.opacity='1';ring.style.opacity='1';core.style.opacity='1';}} ,{passive:true});
+  document.addEventListener('mouseleave',()=>{glow.style.opacity='0';ring.style.opacity='0';core.style.opacity='0';visible=false;});
+  document.addEventListener('mouseenter',()=>{if(visible){glow.style.opacity='1';ring.style.opacity='1';core.style.opacity='1';}});
+  const animateCursor=()=>{rx+=(mx-rx)*.16;ry+=(my-ry)*.16;glow.style.left=mx+'px';glow.style.top=my+'px';core.style.left=mx+'px';core.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateCursor)};animateCursor();
+  document.querySelectorAll('a,button,.project,.skill,.surface').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hovering'));el.addEventListener('mouseleave',()=>ring.classList.remove('hovering'));});
+}
+
 </script>
 </body></html>
